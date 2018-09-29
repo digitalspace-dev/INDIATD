@@ -1,57 +1,4 @@
-<?php
-$servername = "65.60.4.130";
-$username = "neonclou_devusr";
-$password = "@Hope@2018#";
-$dbname = "neonclou_dev";
 
-// Create connection
-$conn = new mysqli($servername, $username, $password, $dbname);
-
-// Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}else{
-	//echo("Connection success");
-}
-
-$Mobile_Number = "";
-$Email = "";
-$Name = "";
-$Professional_Details = "";
-$Abt_Yourself = "";
-
-$Mobile_Number = $_POST['mobile'];
-$Email = $_POST['email'];
-$Name = $_POST['name'];
-$Professional_Details = $_POST['professional_details'];
-$Abt_Yourself = $_POST['abt_yourself'];
-
-if($Mobile_Number != "" && $Email != "" && $Name != ""){
-	//echo("Insert success");
-$sql = "INSERT INTO h2h_user_registration (Mobile_Number,Email,Name,Professional_Details,Abt_Yourself)
-VALUES ('$Mobile_Number', '$Email', '$Name', '$Professional_Details', '$Abt_Yourself')";
-}
-
-if ($conn->query($sql) === TRUE) {
-    //echo "New record created successfully";
-} else {
-   // echo "Error: " . $sql . "<br>" . $conn->error;
-}
-
-$Mobile_Number = "";
-$Email = "";
-$Name = "";
-$Professional_Details = "";
-$Abt_Yourself = "";
-
-$conn->close();
-
-// redirect after processing the POST request
-//header("Location: " . $_SERVER["REQUEST_URI"]);
-header("Location: http://happy2help.org.in/"); /* Redirect browser */
-//exit;
-
-?>
 <!DOCTYPE html>
 <html>
         <head>
@@ -90,6 +37,67 @@ header("Location: http://happy2help.org.in/"); /* Redirect browser */
 
             <body>
 
+              <?php
+              $servername = "65.60.4.130";
+              $username = "neonclou_devusr";
+              $password = "@Hope@2018#";
+              $dbname = "neonclou_dev";
+
+              // Create connection
+              $conn = new mysqli($servername, $username, $password, $dbname);
+
+              // Check connection
+              if ($conn->connect_error) {
+                  die("Connection failed: " . $conn->connect_error);
+                  //echo("Connection failed");
+              }else{
+              	//echo("Connection success");
+              }
+
+              $first_name = "";
+              $last_name = "";
+              $email = "";
+              $phone = "";
+              $gender = "";
+              $role = "";
+
+              $first_name = $_POST['firstname'];
+              $last_name = $_POST['lastname'];
+              $email = $_POST['email'];
+              $phone = $_POST['phone'];
+              $gender = $_POST['gender'];
+              $role = $_POST['type'];
+
+              if($first_name != "" && $last_name != "" && $email != "" && $phone != "" && $gender != "" && $role != ""){
+              	//echo("Insert success");
+              $sql = "INSERT INTO indiatd_volunteer (first_name,last_name,email,phone,gender,role)
+              VALUES ('$first_name', '$last_name', '$email', '$phone', '$gender','$role')";
+              }
+
+              if ($conn->query($sql) === TRUE) {
+                  //echo "New record created successfully";
+                  //alert("Form submitted successfully");
+
+              } else {
+                 //echo "Error in record creation " . $sql . "<br>" . $conn->error;
+              }
+
+              $first_name = "";
+              $last_name = "";
+              $email = "";
+              $phone = "";
+              $gender = "";
+              $role = "";
+
+              $conn->close();
+
+              // redirect after processing the POST request
+              //header("Location: " . $_SERVER["REQUEST_URI"]);
+              header("Location: http://indiathrowdown.com/"); /* Redirect browser */
+              //exit;
+
+              ?>
+
                     <nav id="nav-primary" class="navbar navbar-custom" role="navigation">
                             <div class="container">
 
@@ -115,6 +123,7 @@ header("Location: http://happy2help.org.in/"); /* Redirect browser */
                             </div>
                     </nav>
 
+
                 <div class="container">
                     <div class="row">
                         <div id="volunteer-form" class="col-lg-6 col-lg-offset-3">
@@ -128,6 +137,7 @@ header("Location: http://happy2help.org.in/"); /* Redirect browser */
                                         <p>Enter Details Here Below:</p>
                                 </div>
                                 <!-- volunteer FORM -->
+                                <form method="post">
                                 <div class="volunteer-form col-lg-12">
                                     <div class="control-group">
                                         <div class="controls">
@@ -202,15 +212,16 @@ header("Location: http://happy2help.org.in/"); /* Redirect browser */
                                 </div>
                                    <br/>
                                 <div class="col-lg-12 text-left">
-                                    <button class="button button-big button-dark" onclick="contact_send();">Submit</button>
+                                    <button class="button button-big button-dark" type="submit">Submit</button>
                                 </div>
                                 </div>
+                              </form>
                             </div>
                         </div>
                     </div>
                 </div>
 
- <script>
+ <!--<script>
     export default {
       data() {
         return {
@@ -231,7 +242,7 @@ header("Location: http://happy2help.org.in/"); /* Redirect browser */
         }
       }
     }
-  </script>
+  </script>-->
 
 </body>
 

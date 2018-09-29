@@ -9,21 +9,22 @@ require_once('config.php');
 ?>
 <!DOCTYPE html>
 <head>
-    	
+
     <title>India ThrowDown</title>
-    
+
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="description" content="India ThrowDown">
     <meta name="author" content="themecube">
-    
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
     <!-- viewport settings -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
- 
+
 
     <!-- CSS -->
     <link rel="stylesheet" href="css/bootstrap.css">
-    
+
     <link rel="stylesheet" href="css/pe-icon-7-stroke.css">
     <link rel="stylesheet" href="css/helper.css">
     <link rel="stylesheet" href="css/animate.min.css">
@@ -38,24 +39,133 @@ require_once('config.php');
     <link rel="stylesheet" href="css/owl.transitions.css">
     <link rel="stylesheet" href="css/revolution.css">
     <link rel="stylesheet" href="css/revolution-extralayers.css">
-    
+
     <link rel="stylesheet" href="css/main.css">
-            
+
 
     <!-- Font -->
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300' rel='stylesheet' type='text/css'>
-    
+
     <!-- Favicon -->
     <link rel="shortcut icon" href="img/favicon.ico">
+
 
 
 </head>
 
 <body>
+
+  <?php
+  $servername = "65.60.4.130";
+  $username = "neonclou_devusr";
+  $password = "@Hope@2018#";
+  $dbname = "neonclou_dev";
+
+  // Create connection
+  $conn = new mysqli($servername, $username, $password, $dbname);
+
+  // Check connection
+  if ($conn->connect_error) {
+      die("Connection failed: " . $conn->connect_error);
+      echo("Connection failed");
+  }else{
+    echo("Connection success");
+  }
+
+  $sports_category = "";
+  $first_name = "";
+  $last_name = "";
+  $email = "";
+  $gender = "";
+  $divison = "";
+  $affiliate_box_gym = "";
+  $em_contact_name = "";
+  $em_contact_no = "";
+  $apparel = "";
+  $add_street = "";
+  $add_city = "";
+  $add_state = "";
+  $add_zip_code = "";
+  $add_country = "";
+  $add_phone = "";
+  $national_represent = "";
+  $dob = "";
+  $instagram = "";
+
+  $sports_category_master = $_POST['CategoryM'];
+  $sports_category_A = $_POST['CategoryA'];
+  $sports_category_B = $_POST['CategoryB'];
+  if ($sports_category_master == "Category A"){
+     $sports_category = $sports_category_A;
+  }
+  if ($sports_category_master == "Category B"){
+     $sports_category = $sports_category_B;
+  }
+  $first_name = $_POST['first_name'];
+  $last_name = $_POST['last_name'];
+  $email = $_POST['email'];
+  $gender = $_POST['gender'];
+  $divison = $_POST['division'];
+  $affiliate_box_gym = $_POST['affiliate_box_gym'];
+  $em_contact_name = $_POST['em_contact_name'];
+  $em_contact_no = $_POST['em_contact_no'];
+  $apparel = $_POST['apparel'];
+  $add_street = $_POST['add_street'];
+  $add_city = $_POST['add_city'];
+  $add_state = $_POST['add_state'];
+  $add_zip_code = $_POST['add_zip_code'];
+  $add_country = $_POST['add_country'];
+  $add_phone = $_POST['add_phone'];
+  $national_represent = $_POST['national_represent'];
+  $dob = $_POST['dob_day']+""+$_POST['dob_month']+""+$_POST['dob_year'];
+  $instagram = $_POST['instagram'];
+
+  if($first_name != "" && $last_name != "" && $email != ""){
+    echo("Insert success");
+  $sql = "INSERT INTO indiatd_athlete (sports_category,first_name,last_name,email,gender,divison,affiliate_box_gym,em_contact_name,em_contact_no,apparel,add_street,add_city,add_state,add_zip_code,add_country,add_phone,national_represent,dob,instagram)
+  VALUES ('$sports_category', '$first_name', '$last_name', '$email', '$gender', '$divison' , '$affiliate_box_gym' , '$em_contact_name' , '$em_contact_no' , '$apparel' , '$add_street' , '$add_city' , '$add_state' , '$add_zip_code' , '$add_country' ,
+    '$add_phone' , '$national_represent' , '$dob' , '$instagram')";
+  }
+
+  if ($conn->query($sql) === TRUE) {
+      echo "New record created successfully";
+
+  } else {
+     echo "Error in record creation " . $sql . "<br>" . $conn->error;
+  }
+
+  $sports_category = "";
+  $first_name = "";
+  $last_name = "";
+  $email = "";
+  $gender = "";
+  $divison = "";
+  $affiliate_box_gym = "";
+  $em_contact_name = "";
+  $em_contact_no = "";
+  $apparel = "";
+  $add_street = "";
+  $add_city = "";
+  $add_state = "";
+  $add_zip_code = "";
+  $add_country = "";
+  $add_phone = "";
+  $national_represent = "";
+  $dob = "";
+  $instagram = "";
+
+  $conn->close();
+
+  // redirect after processing the POST request
+  //header("Location: " . $_SERVER["REQUEST_URI"]);
+  header("Location: http://indiathrowdown.com/"); /* Redirect browser */
+  //exit;
+
+  ?>
  <!-- NAVIGATION -->
 		<nav id="nav-primary" class="navbar navbar-custom" role="navigation">
           <div class="container">
-            
+
             <div class="navbar-header">
               <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#nav">
                 <span class="sr-only">Toggle navigation</span>
@@ -72,97 +182,153 @@ require_once('config.php');
 			  </li>
 			</ul>
             </div>
-    
-            
-            
+
+
+
           </div>
         </nav>
+      <form method="post">
     <div class="container">
         <div class="row">
             <div id="register-form" class="col-lg-6 col-lg-offset-3">
                 <div class="row">
                     <button title="Close (Esc)" type="button" class="mfp-close">×</button>
-                    
+
                     <div class="col-lg-12">
                         <h2>Athlete info</h2>
+                        <label class="IDForSportsCategory" for="Sports Category">Sports Category</label>
+                        <select class="IDForSportsCategory" name="CategoryM" id="type">
+                                <option value="Select Category">Select Category</option>
+                                <option value="Category A">Category A</option>
+                                <option value="Category B">Category B</option>
+                        </select>
+                        <label class="IDForSportsCategoryA" for="Category A">Category A <br>
+                          <span>Select any two sports Category</span>
+                        </label>
+                        <select class="IDForSportsCategoryA" multiple="multiple" name="CategoryA" id="type">
+
+                                <option value="Fitness">Fitness</option>
+                                <option value="Strongman">Strongman</option>
+                                <option value="Powerlifting">Powerlifting</option>
+                        </select>
+                        <label class="IDForSportsCategoryB" for="Category B">Category B</label>
+                        <select class="IDForSportsCategoryB" name="CategoryB" id="type">
+                                <option value="Select Category">Select Category</option>
+                                <option value="Kids">Kids</option>
+                                <option value="Masters">Masters</option>
+                        </select>
                     </div>
+
                     <!-- REGISTER FORM -->
                     <div class="register-form col-lg-12">
-                        <div class="control-group">
+                        <div class="control-group IDForName">
                             <div class="controls">
+                                <br/>
                                 <h4> athlete <a style = "color:red">*</a></h4>
                                 <!-- <label for="name">NAME</label><br> -->
-                                <input type="text" name="name" placeholder="First Name" id="name" required data-validation-required-message="Please enter your first name" />
-                                <input type="text" name="name" placeholder="Last Name" id="name" required data-validation-required-message="Please enter your last name" />
+                                <input type="text" name="first_name" placeholder="First Name" id="name" required data-validation-required-message="Please enter your first name" />
+                                <input type="text" name="last_name" placeholder="Last Name" id="name" required data-validation-required-message="Please enter your last name" />
                             </div>
                         </div>
-                    
-                        <div class="control-group">
-                            <div class="controls "> 
+
+                        <div class="control-group IDForEmail">
+                            <div class="controls ">
                                 <h4>email <a style = "color:red">*</a></h4>
                                 <input type="email" name="email" placeholder="Email" id="email"  required data-validation-required-message="Please enter your email" />
                             </div>
                         </div>
-                        
-                        <div class="control-group">
-                                <div class="controls "> 
+
+                        <div class="control-group IDForEmail">
+                                <div class="controls ">
                                     <h4>confirm email <a style = "color:red">*</a></h4>
-                                    <input type="email" name="email" placeholder="Confirm Email" id="email"  required data-validation-required-message="Please enter your email" />
+                                    <input type="email" name="email1" placeholder="Confirm Email" id="email"  required data-validation-required-message="Please enter your email" />
                                 </div>
                         </div>
 
-                        <div class="control-group">
-                                <div class="controls "> 
+                        <div class="control-group IDForGender">
+                                <div class="controls ">
                                     <h4>gender <a style = "color:red">*</a></h4>
                                     <input type="radio" name="gender" value="male"> Male &emsp;&emsp;
                                     <input type="radio" name="gender" value="female"> Female
                                 </div>
                         </div>
-                        
+
                         <br/>
 
-                        <div class="control-group">
-                                <div class="controls "> 
-                                    <h4>Division:Elite/Rx(Men)</h4>
-                                    <p>Do you subscribe to a training program? if not,select other</p>
-                                    <select name="type" id="type" style = "width:110%;">
-                                        <!-- <option value="Do you subscribe to a training program? if not,select other" disabled selected="selected">Do you subscribe to a training program? if not,select other</option> -->
-                                        <!-- <option value="Early Bird">Early Bird</option>
-                                        <option value="Standart">Standart</option>
-                                        <option value="Full Price">Full Price</option> -->
+                        <div class="control-group IDForDivision">
+                                <div class="controls ">
+                                    <h4>Division</h4>
+                                    <select name="division" id="type">
+                                        <option value="Individual Teens 13-15">Individual Teens 13-15</option>
+                                            <span>
+                                                <p>*Need parents consent for registration.</p>
+                                                <p><strong>Age Requirement:</strong> Athletes in this division must be 13 years of age or older as of 1/2/2018 but not older than 15 as of 1/1/2019.</p>
+                                            </span>
+                                        <option value="Individual Teen 16-18">Individual Teen 16-18</option>
+                                            <span>
+                                                <p>*Need parents consent for registration.</p>
+                                                <p><strong>Age Requirement:</strong> Athletes in this division must be 13 years of age or older as of 1/2/2018 but not older than 15 as of 1/1/2019.
+                                            </span>
+                                        <option value="Individual Pro">Individual Pro</option>
+                                            <span>
+                                                <p>This division is for elite level athletes.
+                                                   The athletes are required to perform all the complex weightlifting and gymnastics movement including heavy lifting.
+                                                </p>
+                                            </span>
+                                        <option value="Individual Scaled">Individual Scaled</option>
+                                            <span>
+                                                <p>This division is for those who are not sure about participating in individual pro  but can perform most of the gymnastics movement with occasional heavy weights.</p>
+                                            </span>
+                                        <option value="Individual Masters 35-39">Individual Masters 35-39</option>
+                                            <span>
+                                                <p>The athlete in this division are expected to perform same workout as individual Pro, only they will compete with athlete in their weight class.
+                                                 <p><strong>Age Requirement:</strong> Athletes must have been born on or between 1/2/79-1/1/84</p>
+                                                 </p>
+                                            </span>
+                                        <option value="Individual masters 40-44">Individual masters 40-44</option>
+                                            <span>
+                                                    <P>The athlete is this division are expected to perform a scaled version of individual elite /RX workouts.</P>
+                                                    <p><strong>Age Requirement:</strong> Athletes must have been born on or between 1/2/74-1/1/79</p>
+
+                                            </span>
+                                        <option value="Individual master 45-49">Individual master 45-49</option>
+                                            <span>
+                                                    <p>This athlete in this division are expected to perform most of the gymnastics and should be able to move light to moderate weight.</p>
+                                                    <p><strong>Requirement:</strong> Athletes must have been born after 1/1/74</p>
+                                            </span>
                                     </select>
-                                </div>
+                                 </div>
                         </div>
 
-                        <div class="control-group">
-                            <div class="controls "> 
-                                <h4>affiliate/box (if you are not affiliated , identify yourself as independent) <a style = "color:red">*</a></h4>
-                                <input type="affiliate" name="affiliate" placeholder="Affiliate" id="email"  required data-validation-required-message="Please enter your affiliate" />
+                        <div class="control-group IDForAffiliate">
+                            <div class="controls ">
+                                <h4>affiliate/box/gym<a style = "color:red">*</a></h4>
+                                <input type="affiliate" name="affiliate_box_gym" placeholder="Affiliate" id="email"  required data-validation-required-message="Please enter your affiliate/box/gym" />
                             </div>
                         </div>
 
-                        <div class="control-group">
+                        <div class="control-group IDForEmergencyContact">
                             <div class="controls">
                                 <h4> emergency contact <a style = "color:red">*</a></h4>
-                                <input type="text" name="name" placeholder="Emergency Contact Name" id="name" required data-validation-required-message="Please enter your emergency contact name" />
-                                <input type="tel" name="phone" placeholder="Emergency Contact Number" id="phone" required data-validation-required-message="Please enter your emergency contact number" />
+                                <input type="text" name="em_contact_name" placeholder="Emergency Contact Name" id="name" required data-validation-required-message="Please enter your emergency contact name" />
+                                <input type="tel" name="em_contact_no" placeholder="Emergency Contact Number" id="phone" required data-validation-required-message="Please enter your emergency contact number" />
                             </div>
                         </div>
 
                         <br/>
                         <br/>
 
-                        <div class="control-group">
+                        <div class="control-group IDForTshirtSize">
                             <div class="controls">
                                 <h4> Apparel </h4>
                                 <label for="t-shirt size">T-shirt size<a style = "color:red">*</a></label>
-                                <select name="type" id="type">
+                                <select name="apparel" id="type">
                                     <option value="Please Select" disabled selected="selected">Please Select</option>
                                     <option value="S">S</option>
                                     <option value="L">L</option>
                                     <option value="XL">XL</option>
-                                </select> 
-                                
+                                </select>
+
                                <!-- <label for="shorts size">Shorts Size<a style = "color:red">*</a></label>
                                 <select name="type" id="type">
                                     <option value="Please Select" disabled selected="selected">Please Select</option>
@@ -176,19 +342,19 @@ require_once('config.php');
                         <br/>
                         <br/>
 
-                        <div class="control-group">
+                        <div class="control-group IDForAddress">
                             <div class="controls">
                                 <h4> address </h4>
                                 <label for="street">Street<a style = "color:red">*</a></label>
-                                <input type="text" name="streetaddress" placeholder="Street Address" id="streetaddress" required data-validation-required-message="Please enter your street address" />
+                                <input type="text" name="add_street" placeholder="Street Address" id="streetaddress" required data-validation-required-message="Please enter your street address" />
                                 <label for="street">City<a style = "color:red">*</a></label>
-                                <input type="text" name="city" placeholder="City" id="city" required data-validation-required-message="Please enter your city" />
+                                <input type="text" name="add_city" placeholder="City" id="city" required data-validation-required-message="Please enter your city" />
                                 <label for="state/pronvince">State/Province<a style = "color:red">*</a></label>
-                                <input type="text" name="state/pronvince" placeholder="State/Province" id="state/pronvince" required data-validation-required-message="Please enter your state/province" />
+                                <input type="text" name="add_state" placeholder="State/Province" id="state/pronvince" required data-validation-required-message="Please enter your state/province" />
                                 <label for="zipcode" style="width: 50%">Zip Code<a style = "color:red">*</a></label>
-                                <input type="text" name="zipcode" placeholder="zipcode" pattern="[0-9]{5}" id="zipcode" required data-validation-required-message="Please enter your zip code" style="width: 50%"/><br/>
+                                <input type="text" name="add_zip_code" placeholder="zipcode" pattern="[0-9]{5}" id="zipcode" required data-validation-required-message="Please enter your zip code" style="width: 50%"/><br/>
                                 <label for="country">Country<a style = "color:red">*</a></label>
-                                <select name="type" id="type">
+                                <select name="add_country" id="type">
                                     <option value="" disabled selected="selected">Select type</option>
                                     <option value="Afghanistan" title="Afghanistan">Afghanistan</option>
                                     <option value="Åland Islands" title="Åland Islands">Åland Islands</option>
@@ -441,23 +607,23 @@ require_once('config.php');
                                     <option value="Zimbabwe" title="Zimbabwe">Zimbabwe</option>
                                 </select>
                                 <label for="phone">PHONE <a style = "color:red">*</a></label><br>
-                                <input type="text" name="phone" id="phone" required data-validation-required-message="Please enter your phone" style="width: 50%" />
+                                <input type="text" name="add_phone" id="phone" required data-validation-required-message="Please enter your phone" style="width: 50%" />
                             </div>
                         </div>
 
                         <br/>
                         <br/>
 
-                        <div class="control-group">
+                        <div class="control-group IDForAddInfo">
                             <div class="controls">
                                 <h4> additional info </h4>
                                 <label for="nationrepresenting">Nation representing<a style = "color:red">*</a></label>
-                                <select name="type" id="type">
+                                <select name="national_represent" id="type">
                                     <option value="Please Select" disabled selected="selected">Please Select</option>
                                     <option value="indian">Indian</option>
                                 </select>
                                 <label for="dateofbirth" style="width: 100%;">Date of Birth<a style = "color:red">*</a></label>
-                                <select name="type" id="type" style="width: 30%;">
+                                <select name="dob_month" id="type" style="width: 30%;">
                                     <option value="Month" disabled selected="selected">Month</option>
                                     <option value="1">January</option>
                                     <option value="2">Febuary</option>
@@ -472,7 +638,7 @@ require_once('config.php');
                                     <option value="11">November</option>
                                     <option value="12">December</option>
                                 </select>&nbsp;&nbsp;&nbsp;&nbsp;
-                                <select name="type" id="type" style="width: 30%;">
+                                <select name="dob_day" id="type" style="width: 30%;">
                                     <option value="day" disabled selected="selected">Day</option>
                                     <option value="-">-</option>
                                     <option value="1">1</option>
@@ -507,7 +673,7 @@ require_once('config.php');
                                     <option value="30">30</option>
                                     <option value="31">31</option>
                                 </select>&nbsp;&nbsp;&nbsp;&nbsp;
-                                <select name="type" id="type" style="width: 30%;">
+                                <select name="dob_year" id="type" style="width: 30%;">
                                     <option value="year" disabled selected="selected">Year</option>
                                     <option value="2019">2019</option>
                                     <option value="2018">2018</option>
@@ -579,7 +745,7 @@ require_once('config.php');
                         <br/>
                         <br/>
 
-                        <div class="control-group">
+                       <!-- <div class="control-group">
                             <div class="controls">
                                 <h4> Benchmark workouts</h4>
                                 <label for="fran" style="width:35%">Fran</label>
@@ -639,18 +805,18 @@ require_once('config.php');
                                 <input type="text" placeholder="Weight" id="time" required data-validation-required-message="Please enter your Weight" style="margin-left: 0px;width: 26%"/>
                                 <input type="text" placeholder="Weight" id="time" required data-validation-required-message="Please enter your Weight" style="margin-left: 49px;width: 28%""/>
                             </div>
-                        </div>
+                        </div> -->
 
                         <br/>
 
 
-                        <div class="text-left">
-                            <button class="button button-big button-dark" onclick="contact_send();" style="color: white; background-color: green">Save Changes</button>
+                        <div class="text-left IDForSaveChangesBtn">
+                            <button class="button button-big button-dark" type="submit" onclick="contact_send();" style="color: white; background-color: green">Save Changes</button>
                         </div>
 
                         <br/>
 
-                        <div class="control-group">
+                        <div class="control-group IDForAgreement">
                             <div class="checkbox">
                                 <label>
                                   <input type="checkbox" value="">
@@ -660,7 +826,7 @@ require_once('config.php');
                         </div>
 
                          <!--<div class="control-group">
-                            <div class="controls ">                            
+                            <div class="controls ">
                                 <label for="type">TYPE</label><br>
                                 <select name="type" id="type">
                                         <option value="" disabled selected="selected">Select type</option>
@@ -673,32 +839,144 @@ require_once('config.php');
                         <br/>
                         <br/>
 
-                        <div class="text-left">
-                            <button id="rzp-button1" class="button button-big button-dark" onclick="contact_send();" style="color: white; background-color: red">Proceed To Payment</button>
+                        <div class="text-left IDForPaymnetBtn">
+                            <button id="rzp-button1" class="button button-big button-dark" style="color: white; background-color: red">Proceed To Payment</button>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</body>
+  </form>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="/indiatd/js/main.js"></script>
+
+    <link href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" rel="stylesheet" />
+    <link href="./jquery.multiselect.css" rel="stylesheet" />
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="./jquery.multiselect.js"></script>
+
+    <script>
+    $( document ).ready(function() {
+        $('select[multiple]').multiselect({
+            columns: 1,
+            placeholder: 'Select Category',
+            search: false,
+            searchOptions: {
+                'default': 'Search Category'
+            },
+            selectAll: false,
+            maxSelect:2
+        });
+
+        //multiselect dynamic
+        $("#ms-list-1 .ms-options").on('click',function(){
+          var value = $("#ms-list-1 button span").text();
+          var array = value.split(', ');
+          var flag = value.includes("Fitness");
+
+          if(array.length > 2) {
+            alert("Maximum you can participate in any two Categories of sport, please select any two");
+            //$(this).find('input').prop( "checked", false );
+            //$(this).parent().find('button span').text('');
+            //value = '';
+            //array = [];
+            //flag = false;
+          }
+
+          if(flag){
+            IDForDivision.show();
+          } else {
+            IDForDivision.hide();
+          }
+        });
+
+    });
+
+  </script>
+
 <script>
+//Dynamic form logic
+var IDForSportsCategory = $(".IDForSportsCategory").eq(1);
+var IDForSportsCategoryA = $(".IDForSportsCategoryA");
+var IDForSportsCategoryB = $(".IDForSportsCategoryB");
+var IDForName = $(".IDForName");
+var IDForEmail = $(".IDForEmail");
+var IDForGender = $(".IDForGender");
+var IDForDivision = $(".IDForDivision");
+var IDForAffiliate = $(".IDForAffiliate");
+var IDForEmergencyContact = $(".IDForEmergencyContact");
+var IDForTshirtSize = $(".IDForTshirtSize");
+var IDForAddress = $(".IDForAddress");
+var IDForAddInfo = $(".IDForAddInfo");
+var IDForSaveChangesBtn = $(".IDForSaveChangesBtn");
+var IDForAgreement = $(".IDForAgreement");
+var IDForPaymnetBtn = $(".IDForPaymnetBtn");
+
+$( document ).ready(function() {
+    console.log( "ready!" );
+    IDForSportsCategoryA.hide();
+    IDForSportsCategoryB.hide();
+    IDForName.hide();
+    IDForEmail.hide();
+    IDForGender.hide();
+    IDForDivision.hide();
+    IDForAffiliate.hide();
+    IDForEmergencyContact.hide();
+    IDForTshirtSize.hide();
+    IDForAddress.hide();
+    IDForAddInfo.hide();
+    IDForSaveChangesBtn.hide();
+    IDForAgreement.hide();
+    IDForPaymnetBtn.hide();
+    $("#ms-list-1").css('display','none');
+});
+
+IDForSportsCategory.change(function() {
+if ( IDForSportsCategory.val() === "Category A" ){
+  //IDForSportsCategoryA.show();
+  IDForSportsCategoryB.hide();
+  IDForSportsCategoryA.eq(0).css('display','block');
+  $("#ms-list-1").css('display','block');
+} else if ( IDForSportsCategory.val() === "Category B" ){
+  IDForSportsCategoryA.eq(0).css('display','none');
+  IDForSportsCategoryB.show();
+  $("#ms-list-1").css('display','none');
+}
+
+IDForName.show();
+IDForEmail.show();
+IDForGender.show();
+IDForAffiliate.show();
+IDForEmergencyContact.show();
+IDForTshirtSize.show();
+IDForAddress.show();
+IDForAddInfo.show();
+IDForSaveChangesBtn.show();
+IDForAgreement.show();
+
+});
+
 // REGISTER FORM FUNCTION
 var contact_send = function(){
-	
+
 	'use strict';
-	
+
 	var name  = $("#name").val();
 	var email = $("#email").val();
 	var phone = $("#phone").val();
 	var type  = $("#type").val();
-	
-		 if ( name=="" ){ alert("name area is empty!"); $("#name").focus(); }
-	else if ( email=="" ){ alert("email address area is empty!"); $("#email").focus(); }
-	else if ( phone=="" ){ alert("phone number area is empty!"); $("#phone").focus(); }
-	else if ( type=="" ){ alert("register type isn't selected!"); $("#type").focus(); }
+
+		 if ( name=="" ){ alert("name area is empty!"); $("#name").focus(); IDForPaymnetBtn.hide();}
+	else if ( email=="" ){ alert("email address area is empty!"); $("#email").focus(); IDForPaymnetBtn.hide();}
+	else if ( phone=="" ){ alert("phone number area is empty!"); $("#phone").focus(); IDForPaymnetBtn.hide();}
+	else if ( type=="" ){ alert("register type isn't selected!"); $("#type").focus(); IDForPaymnetBtn.hide();}
 	else {
-		$.post("contact.send.php", { name:name, email:email, phone:phone, type:type }, function( result ){
+    IDForPaymnetBtn.show();
+/*
+  	$.post("contact.send.php", { name:name, email:email, phone:phone, type:type }, function( result ){
 			if ( result=="SUCCESS" ){
 				alert("Your contact form is sent.");
 				setTimeout(function(){
@@ -711,14 +989,15 @@ var contact_send = function(){
 				alert("Your contact form isn't sent. Please check fields and try again.");
 			}
 		});
+    */
 	}
 
 };
 
 
 </script>
-<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
-    <script>
+ <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+     <script>
         let options = {
             "key": "<?php echo $razor_pay_key; ?>",
             "amount": "100", // 2000 paise = INR 20
@@ -759,3 +1038,4 @@ var contact_send = function(){
         text-transform: capitalize;
     }
 </style>
+</body>
