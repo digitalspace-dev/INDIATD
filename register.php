@@ -55,113 +55,6 @@ require_once('config.php');
 
 <body>
 
-  <?php
-  $servername = "65.60.4.130";
-  $username = "neonclou_devusr";
-  $password = "@Hope@2018#";
-  $dbname = "neonclou_dev";
-
-  // Create connection
-  $conn = new mysqli($servername, $username, $password, $dbname);
-
-  // Check connection
-  if ($conn->connect_error) {
-      die("Connection failed: " . $conn->connect_error);
-      echo("Connection failed");
-  }else{
-    echo("Connection success");
-  }
-
-  $sports_category = "";
-  $first_name = "";
-  $last_name = "";
-  $email = "";
-  $gender = "";
-  $divison = "";
-  $affiliate_box_gym = "";
-  $em_contact_name = "";
-  $em_contact_no = "";
-  $apparel = "";
-  $add_street = "";
-  $add_city = "";
-  $add_state = "";
-  $add_zip_code = "";
-  $add_country = "";
-  $add_phone = "";
-  $national_represent = "";
-  $dob = "";
-  $instagram = "";
-
-  $sports_category_master = $_POST['CategoryM'];
-  $sports_category_A = $_POST['CategoryA'];
-  $sports_category_B = $_POST['CategoryB'];
-  if ($sports_category_master == "Category A"){
-     $sports_category = $sports_category_A;
-  }
-  if ($sports_category_master == "Category B"){
-     $sports_category = $sports_category_B;
-  }
-  $first_name = $_POST['first_name'];
-  $last_name = $_POST['last_name'];
-  $email = $_POST['email'];
-  $gender = $_POST['gender'];
-  $divison = $_POST['division'];
-  $affiliate_box_gym = $_POST['affiliate_box_gym'];
-  $em_contact_name = $_POST['em_contact_name'];
-  $em_contact_no = $_POST['em_contact_no'];
-  $apparel = $_POST['apparel'];
-  $add_street = $_POST['add_street'];
-  $add_city = $_POST['add_city'];
-  $add_state = $_POST['add_state'];
-  $add_zip_code = $_POST['add_zip_code'];
-  $add_country = $_POST['add_country'];
-  $add_phone = $_POST['add_phone'];
-  $national_represent = $_POST['national_represent'];
-  $dob = $_POST['dob_day']+""+$_POST['dob_month']+""+$_POST['dob_year'];
-  $instagram = $_POST['instagram'];
-
-  if($first_name != "" && $last_name != "" && $email != ""){
-    echo("Insert success");
-  $sql = "INSERT INTO indiatd_athlete (sports_category,first_name,last_name,email,gender,divison,affiliate_box_gym,em_contact_name,em_contact_no,apparel,add_street,add_city,add_state,add_zip_code,add_country,add_phone,national_represent,dob,instagram)
-  VALUES ('$sports_category', '$first_name', '$last_name', '$email', '$gender', '$divison' , '$affiliate_box_gym' , '$em_contact_name' , '$em_contact_no' , '$apparel' , '$add_street' , '$add_city' , '$add_state' , '$add_zip_code' , '$add_country' ,
-    '$add_phone' , '$national_represent' , '$dob' , '$instagram')";
-  }
-
-  if ($conn->query($sql) === TRUE) {
-      echo "New record created successfully";
-
-  } else {
-     echo "Error in record creation " . $sql . "<br>" . $conn->error;
-  }
-
-  $sports_category = "";
-  $first_name = "";
-  $last_name = "";
-  $email = "";
-  $gender = "";
-  $divison = "";
-  $affiliate_box_gym = "";
-  $em_contact_name = "";
-  $em_contact_no = "";
-  $apparel = "";
-  $add_street = "";
-  $add_city = "";
-  $add_state = "";
-  $add_zip_code = "";
-  $add_country = "";
-  $add_phone = "";
-  $national_represent = "";
-  $dob = "";
-  $instagram = "";
-
-  $conn->close();
-
-  // redirect after processing the POST request
-  //header("Location: " . $_SERVER["REQUEST_URI"]);
-  header("Location: http://indiathrowdown.com/"); /* Redirect browser */
-  //exit;
-
-  ?>
  <!-- NAVIGATION -->
 		<nav id="nav-primary" class="navbar navbar-custom" role="navigation">
           <div class="container">
@@ -810,12 +703,6 @@ require_once('config.php');
                         <br/>
 
 
-                        <div class="text-left IDForSaveChangesBtn">
-                            <button class="button button-big button-dark" type="submit" onclick="contact_send();" style="color: white; background-color: green">Save Changes</button>
-                        </div>
-
-                        <br/>
-
                         <div class="control-group IDForAgreement">
                             <div class="checkbox">
                                 <label>
@@ -823,6 +710,12 @@ require_once('config.php');
                                   By registering to this event,you are agreeing to the IndiaThrow Down Online Challenge and Qualifier <b><font color = "red">liablity waiver and policies * </font></b>
                                 </label>
                             </div>
+                        </div>
+
+                       <br/>
+
+                        <div class="text-left IDForSaveChangesBtn">
+                            <button class="button button-big button-dark" type="submit" onclick="contact_send();" style="color: white; background-color: green">Save Changes</button>
                         </div>
 
                          <!--<div class="control-group">
@@ -850,11 +743,11 @@ require_once('config.php');
   </form>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <script src="/indiatd/js/main.js"></script>
+    <script src="./js/main.js"></script>
 
     <link href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" rel="stylesheet" />
     <link href="./jquery.multiselect.css" rel="stylesheet" />
-    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <!--<script src="https://code.jquery.com/jquery-1.12.4.js"></script>-->
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script src="./jquery.multiselect.js"></script>
 
@@ -893,11 +786,32 @@ require_once('config.php');
           }
         });
 
+        console.log( "ready!" );
+        IDForSportsCategoryA.hide();
+        IDForSportsCategoryB.hide();
+        IDForName.hide();
+        IDForEmail.hide();
+        IDForGender.hide();
+        IDForDivision.hide();
+        IDForAffiliate.hide();
+        IDForEmergencyContact.hide();
+        IDForTshirtSize.hide();
+        IDForAddress.hide();
+        IDForAddInfo.hide();
+        IDForSaveChangesBtn.hide();
+        IDForAgreement.hide();
+
+        $("#ms-list-1").css('display','none');
+
+        if(enablePaymentBtn){
+          IDForPaymnetBtn.show();
+          IDForSportsCategory.hide();
+        }else{
+          IDForPaymnetBtn.hide();
+        }
+
     });
 
-  </script>
-
-<script>
 //Dynamic form logic
 var IDForSportsCategory = $(".IDForSportsCategory").eq(1);
 var IDForSportsCategoryA = $(".IDForSportsCategoryA");
@@ -914,25 +828,7 @@ var IDForAddInfo = $(".IDForAddInfo");
 var IDForSaveChangesBtn = $(".IDForSaveChangesBtn");
 var IDForAgreement = $(".IDForAgreement");
 var IDForPaymnetBtn = $(".IDForPaymnetBtn");
-
-$( document ).ready(function() {
-    console.log( "ready!" );
-    IDForSportsCategoryA.hide();
-    IDForSportsCategoryB.hide();
-    IDForName.hide();
-    IDForEmail.hide();
-    IDForGender.hide();
-    IDForDivision.hide();
-    IDForAffiliate.hide();
-    IDForEmergencyContact.hide();
-    IDForTshirtSize.hide();
-    IDForAddress.hide();
-    IDForAddInfo.hide();
-    IDForSaveChangesBtn.hide();
-    IDForAgreement.hide();
-    IDForPaymnetBtn.hide();
-    $("#ms-list-1").css('display','none');
-});
+var enablePaymentBtn = false;
 
 IDForSportsCategory.change(function() {
 if ( IDForSportsCategory.val() === "Category A" ){
@@ -956,7 +852,7 @@ IDForAddress.show();
 IDForAddInfo.show();
 IDForSaveChangesBtn.show();
 IDForAgreement.show();
-
+//IDForPaymnetBtn.show();
 });
 
 // REGISTER FORM FUNCTION
@@ -964,38 +860,89 @@ var contact_send = function(){
 
 	'use strict';
 
-	var name  = $("#name").val();
-	var email = $("#email").val();
-	var phone = $("#phone").val();
-	var type  = $("#type").val();
+	var CategoryM  = $("select[name='CategoryM']").val();
+  if (CategoryM == 'Category A'){
+    var CategoryA  = $("select[name='CategoryA']").val();
+  	var CategoryB  = "";
+    var division  = $("select[name='division']").val();
+  }else {
+    var CategoryA  = "";
+  	var CategoryB  = $("select[name='CategoryB']").val();
+    var division  = "";
+  }
 
-		 if ( name=="" ){ alert("name area is empty!"); $("#name").focus(); IDForPaymnetBtn.hide();}
-	else if ( email=="" ){ alert("email address area is empty!"); $("#email").focus(); IDForPaymnetBtn.hide();}
-	else if ( phone=="" ){ alert("phone number area is empty!"); $("#phone").focus(); IDForPaymnetBtn.hide();}
-	else if ( type=="" ){ alert("register type isn't selected!"); $("#type").focus(); IDForPaymnetBtn.hide();}
-	else {
-    IDForPaymnetBtn.show();
+	var first_name  = $("input[name='first_name']").val();
+  var last_name  = $("input[name='last_name']").val();
+  var email  = $("input[name='email']").val();
+  var gender  = $("input[name='gender']").val();
+
+  var affiliate_box_gym  = $("input[name='affiliate_box_gym']").val();
+  var em_contact_name  = $("input[name='em_contact_name']").val();
+  var em_contact_no  = $("input[name='em_contact_no']").val();
+  var apparel  = $("select[name='apparel']").val();
+  var add_street  = $("input[name='add_street']").val();
+  var add_city  = $("input[name='add_city']").val();
+  var add_state  = $("input[name='add_state']").val();
+  var add_zip_code  = $("input[name='add_zip_code']").val();
+  var add_country  = $("select[name='add_country']").val();
+  var add_phone  = $("input[name='add_phone']").val();
+  var national_represent  = $("select[name='national_represent']").val();
+  var dob_day  = $("select[name='dob_day']").val();
+  var dob_month  = $("select[name='dob_month']").val();
+  var dob_year  = $("select[name='dob_year']").val();
+  var instagram  = $("input[name='instagram']").val();
+
+
+		 //if ( name=="" ){ alert("name area is empty!"); $("#name").focus(); IDForPaymnetBtn.hide();}
+	//else if ( email=="" ){ alert("email address area is empty!"); $("#email").focus(); IDForPaymnetBtn.hide();}
+	//else if ( phone=="" ){ alert("phone number area is empty!"); $("#phone").focus(); IDForPaymnetBtn.hide();}
+//	else if ( type=="" ){ alert("register type isn't selected!"); $("#type").focus(); IDForPaymnetBtn.hide();}
+//	else {
+
 /*
-  	$.post("contact.send.php", { name:name, email:email, phone:phone, type:type }, function( result ){
-			if ( result=="SUCCESS" ){
-				alert("Your contact form is sent.");
+  	$.post("register-api.php", { CategoryM:CategoryM, CategoryA:CategoryA, CategoryB:CategoryB, first_name:first_name, last_name:last_name, email:email,
+     gender:gender, division:division, affiliate_box_gym:affiliate_box_gym, em_contact_name:em_contact_name,
+   em_contact_no:em_contact_no, apparel:apparel, add_street:add_street, add_city:add_city, add_state:add_state,
+ add_zip_code:add_zip_code, add_country:add_country, add_phone:add_phone, national_represent:national_represent,
+dob_day:dob_day, dob_month:dob_month, dob_year:dob_year, instagram:instagram}, function( result ){
+			if ( result == "SUCCESS" ){
+				alert("Your form is saved. Proceed with payment");
 				setTimeout(function(){
 					$("#name").val("");
 					$("#email").val("");
 					$("#phone").val("");
 					$("#type").val("");
-				}, 3000);
+
+				},3000);
+        enablePaymentBtn = true;
 			} else {
-				alert("Your contact form isn't sent. Please check fields and try again.");
+				alert("Your form isn't saved. Please check fields and try again.");
 			}
 		});
-    */
-	}
+*/
+    var dataPayLoad = { CategoryM:CategoryM, CategoryA:CategoryA, CategoryB:CategoryB, first_name:first_name, last_name:last_name, email:email,
+     gender:gender, division:division, affiliate_box_gym:affiliate_box_gym, em_contact_name:em_contact_name,
+   em_contact_no:em_contact_no, apparel:apparel, add_street:add_street, add_city:add_city, add_state:add_state,
+ add_zip_code:add_zip_code, add_country:add_country, add_phone:add_phone, national_represent:national_represent,
+dob_day:dob_day, dob_month:dob_month, dob_year:dob_year, instagram:instagram};
+
+    $.ajax({
+      type: "POST",
+      url: "register-api.php",
+      data: dataPayLoad,
+      cache: false,
+      success: function(result) {
+        alert("Your form is saved. Proceed with payment");
+      }
+  });
+
+//	}
 
 };
 
 
 </script>
+
  <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
      <script>
         let options = {
