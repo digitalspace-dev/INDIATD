@@ -750,6 +750,7 @@ require_once('config.php');
     <!--<script src="https://code.jquery.com/jquery-1.12.4.js"></script>-->
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script src="./jquery.multiselect.js"></script>
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
 
     <script>
     $( document ).ready(function() {
@@ -829,6 +830,7 @@ var IDForSaveChangesBtn = $(".IDForSaveChangesBtn");
 var IDForAgreement = $(".IDForAgreement");
 var IDForPaymnetBtn = $(".IDForPaymnetBtn");
 var enablePaymentBtn = false;
+var payment = 100;
 
 IDForSportsCategory.change(function() {
 if ( IDForSportsCategory.val() === "Category A" ){
@@ -862,13 +864,21 @@ document.getElementById('save-button').onclick = function() {
 
 	var CategoryM  = $("select[name='CategoryM']").val();
   if (CategoryM == 'Category A'){
-    var CategoryA  = $("select[name='CategoryA']").val();
-  	var CategoryB  = "";
+    //Payment
+    var sportsCount = $("select[name='CategoryA']").val().length;
+    if(sportsCount == 1){
+      payment = 200000;
+    } else if (sportsCount == 2){
+      payment = 400000;
+    }
+    var CategoryA  = $("select[name='CategoryA']").val().toString();
+  	var CategoryB  = "NA";
     var division  = $("select[name='division']").val();
   }else {
-    var CategoryA  = "";
+    var CategoryA  = "NA";
   	var CategoryB  = $("select[name='CategoryB']").val();
-    var division  = "";
+    var division  = "NA";
+    payment = 100000;
   }
 
 	var first_name  = $("input[name='first_name']").val();
@@ -955,39 +965,34 @@ dob_day:dob_day, dob_month:dob_month, dob_year:dob_year, instagram:instagram};
 
 };
 
-
-</script>
-
- <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
-     <script>
-        let options = {
-            "key": "<?php echo $razor_pay_key; ?>",
-            "amount": "100", // 2000 paise = INR 20
-            "name": "Rover Fitness",
-            "description": "Purchase Description",
-            "image": "logo.png",
-            "handler": function(response) {
-              // alert(response.razorpay_payment_id);
-                if (typeof response.razorpay_payment_id == 'undefined' || response.razorpay_payment_id < 1) {
-                    redirect_url = '/you-owe-money.html';
-                } else {
-                    redirect_url = 'http://indiathrowdown.com/';
-                }
-                location.href = redirect_url;
-            },
-            "prefill": {
-                "name": "",
-                "email": ""
-            },
-            "theme": {
-                "color": "#F37254"
-            }
-        };
-        var rzp1 = new Razorpay(options);
-
         document.getElementById('rzp-button1').onclick = function(e) {
-            rzp1.open();
-            e.preventDefault();
+          let options = {
+              "key": "<?php echo $razor_pay_key; ?>",
+              "amount": payment, // 2000 paise = INR 20
+              "name": "Rover Fitness",
+              "description": "Purchase Description",
+              "image": "logo.png",
+              "handler": function(response) {
+                // alert(response.razorpay_payment_id);
+                  if (typeof response.razorpay_payment_id == 'undefined' || response.razorpay_payment_id < 1) {
+                      redirect_url = '/you-owe-money.html';
+                  } else {
+                      redirect_url = 'http://indiathrowdown.com/';
+                  }
+                  location.href = redirect_url;
+              },
+              "prefill": {
+                  "name": "",
+                  "email": ""
+              },
+              "theme": {
+                  "color": "#F37254"
+              }
+          };
+
+          var rzp1 = new Razorpay(options);
+          rzp1.open();
+          e.preventDefault();
         }
     </script>
 
