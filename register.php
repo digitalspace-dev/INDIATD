@@ -715,7 +715,7 @@ require_once('config.php');
                        <br/>
 
                         <div class="text-left IDForSaveChangesBtn">
-                            <button class="button button-big button-dark" type="submit" onclick="contact_send();" style="color: white; background-color: green">Save Changes</button>
+                            <button class="button button-big button-dark" type="submit" id="save-button" style="color: white; background-color: green">Save Changes</button>
                         </div>
 
                          <!--<div class="control-group">
@@ -856,7 +856,7 @@ IDForAgreement.show();
 });
 
 // REGISTER FORM FUNCTION
-var contact_send = function(){
+document.getElementById('save-button').onclick = function() {
 
 	'use strict';
 
@@ -932,9 +932,24 @@ dob_day:dob_day, dob_month:dob_month, dob_year:dob_year, instagram:instagram};
       data: dataPayLoad,
       cache: false,
       success: function(result) {
-        alert("Your form is saved. Proceed with payment");
-      }
+        if(data.status == 'success'){
+          alert("Your form is saved. Proceed with payment");
+        }else if(data.status == 'error'){
+          alert("Error on query!");
+        }
+
+      },
+      error: function (xmlHttpRequest, textStatus, errorThrown) {
+         if(xmlHttpRequest.readyState == 0 || xmlHttpRequest.status == 0)
+              return;  // it's not really an error
+         else
+              // Do normal error handling
+              alert("Your form is saved. Proceed with payment");
+              IDForPaymnetBtn.show();
+        }
   });
+
+  return false;
 
 //	}
 

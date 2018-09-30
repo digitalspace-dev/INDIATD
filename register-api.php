@@ -1,4 +1,7 @@
 <?php
+
+header('Content-type: application/json');
+
 $servername = "65.60.4.130";
 $username = "neonclou_devusr";
 $password = "@Hope@2018#";
@@ -72,9 +75,11 @@ VALUES ('$sports_category', '$first_name', '$last_name', '$email', '$gender', '$
 
 if ($conn->query($sql) === TRUE) {
     echo "New record created successfully";
+    $response_array['status'] = 'success';
 
 } else {
    echo "Error in record creation " . $sql . "<br>" . $conn->error;
+    $response_array['status'] = 'error';
 }
 
 $sports_category = "";
@@ -101,8 +106,9 @@ $conn->close();
 
 // redirect after processing the POST request
 //header("Location: " . $_SERVER["REQUEST_URI"]);
-header("Location: http://indiathrowdown.com/"); /* Redirect browser */
+//header("Location: http://indiathrowdown.com/"); /* Redirect browser */
 //exit;
 
+echo json_encode($response_array);
 
 ?>
