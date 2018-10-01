@@ -117,7 +117,7 @@ require_once('config.php');
                         <div class="control-group IDForName">
                             <div class="controls">
                                 <br/>
-                                <h4> athlete <a style = "color:red">*</a></h4>
+                                <h4> Athlete <a style = "color:red">*</a></h4>
                                 <!-- <label for="name">NAME</label><br> -->
                                 <input type="text" name="first_name" placeholder="First Name" id="name" required data-validation-required-message="Please enter your first name" />
                                 <input type="text" name="last_name" placeholder="Last Name" id="name" required data-validation-required-message="Please enter your last name" />
@@ -126,21 +126,21 @@ require_once('config.php');
 
                         <div class="control-group IDForEmail">
                             <div class="controls ">
-                                <h4>email <a style = "color:red">*</a></h4>
+                                <h4>Email <a style = "color:red">*</a></h4>
                                 <input type="email" name="email" placeholder="Email" id="email"  required data-validation-required-message="Please enter your email" />
                             </div>
                         </div>
 
                         <div class="control-group IDForEmail">
                                 <div class="controls ">
-                                    <h4>confirm email <a style = "color:red">*</a></h4>
+                                    <h4>Confirm email <a style = "color:red">*</a></h4>
                                     <input type="email" name="email1" placeholder="Confirm Email" id="email"  required data-validation-required-message="Please enter your email" />
                                 </div>
                         </div>
 
                         <div class="control-group IDForGender">
                                 <div class="controls ">
-                                    <h4>gender <a style = "color:red">*</a></h4>
+                                    <h4>Gender <a style = "color:red">*</a></h4>
                                     <input type="radio" name="gender" value="male"> Male &emsp;&emsp;
                                     <input type="radio" name="gender" value="female"> Female
                                 </div>
@@ -195,16 +195,16 @@ require_once('config.php');
 
                         <div class="control-group IDForAffiliate">
                             <div class="controls ">
-                                <h4>affiliate/box/gym<a style = "color:red">*</a></h4>
-                                <input type="affiliate" name="affiliate_box_gym" placeholder="Affiliate" id="email"  required data-validation-required-message="Please enter your affiliate/box/gym" />
+                                <h4>Affiliate/box/gym<a style = "color:red">*</a></h4>
+                                <input type="text" name="affiliate_box_gym" placeholder="Affiliate" id="email"  required data-validation-required-message="Please enter your affiliate/box/gym" />
                             </div>
                         </div>
 
                         <div class="control-group IDForEmergencyContact">
                             <div class="controls">
-                                <h4> emergency contact info <a style = "color:red">*</a></h4>
+                                <h4> Emergency contact info <a style = "color:red">*</a></h4>
                                 <input type="text" name="em_contact_name" placeholder="Contact Name" id="name" required data-validation-required-message="Please enter your emergency contact name" />
-                                <input type="tel" name="em_contact_no" placeholder="Contact Number" id="phone" required data-validation-required-message="Please enter your emergency contact number" />
+                                <input type="text" style = "width:50%" name="em_contact_no" placeholder="Contact Number" id="phone" required data-validation-required-message="Please enter your emergency contact number" />
                             </div>
                         </div>
 
@@ -237,7 +237,7 @@ require_once('config.php');
 
                         <div class="control-group IDForAddress">
                             <div class="controls">
-                                <h4> address </h4>
+                                <h4> Address </h4>
                                 <label for="street">Street<a style = "color:red">*</a></label>
                                 <input type="text" name="add_street" placeholder="Street Address" id="streetaddress" required data-validation-required-message="Please enter your street address" />
                                 <label for="street">City<a style = "color:red">*</a></label>
@@ -499,8 +499,8 @@ require_once('config.php');
                                     <option value="Zambia" title="Zambia">Zambia</option>
                                     <option value="Zimbabwe" title="Zimbabwe">Zimbabwe</option>
                                 </select>
-                                <label for="phone">PHONE <a style = "color:red">*</a></label><br>
-                                <input type="text" name="add_phone" id="phone" required data-validation-required-message="Please enter your phone" style="width: 50%" />
+                                <label for="phone">Phone Number <a style = "color:red">*</a></label><br>
+                                <input type="text" name="add_phone" id="phone" placeholder="Phone Number" required data-validation-required-message="Please enter your phone" style="width: 50%" />
                             </div>
                         </div>
 
@@ -509,7 +509,7 @@ require_once('config.php');
 
                         <div class="control-group IDForAddInfo">
                             <div class="controls">
-                                <h4> additional info </h4>
+                                <h4> Additional info </h4>
                                 <label for="nationrepresenting">Nation representing<a style = "color:red">*</a></label>
                                 <select name="national_represent" id="type">
                                     <option value="Please Select" disabled selected="selected">Please Select</option>
@@ -873,6 +873,9 @@ document.getElementById('save-button').onclick = function() {
       payment = 200000;
     } else if (sportsCount == 2){
       payment = 400000;
+    } else if (sportsCount == 3) {
+      alert("Maximum you can participate in any two Categories of sport, please select any two");
+      return false;
     }
     var CategoryA  = $("select[name='CategoryA']").val().toString();
   	var CategoryB  = "NA";
