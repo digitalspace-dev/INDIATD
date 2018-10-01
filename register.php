@@ -53,7 +53,7 @@ require_once('config.php');
 
 </head>
 
-<body>
+<body style="background:#fac42b;">
 
  <!-- NAVIGATION -->
 		<nav id="nav-primary" class="navbar navbar-custom" role="navigation">
@@ -81,7 +81,7 @@ require_once('config.php');
           </div>
         </nav>
       <form method="post">
-    <div class="container">
+    <div class="container" style="background: #fff;">
         <div class="row">
             <div id="register-form" class="col-lg-6 col-lg-offset-3">
                 <div class="row">
@@ -715,7 +715,7 @@ require_once('config.php');
                        <br/>
 
                         <div class="text-left IDForSaveChangesBtn">
-                            <button class="button button-big button-dark" type="submit" id="save-button" style="color: white; background-color: green">Save Changes</button>
+                            <button class=".btn-primary" type="submit" id="save-button" style="color:#fac42b; background:#000; padding:5px 30px;">Save Changes</button>
                         </div>
 
                          <!--<div class="control-group">
@@ -733,7 +733,7 @@ require_once('config.php');
                         <br/>
 
                         <div class="text-left IDForPaymnetBtn">
-                            <button id="rzp-button1" class="button button-big button-dark" style="color: white; background-color: red">Proceed To Payment</button>
+                            <button id="rzp-button1" class=".btn-success" style="color:#000; background:#fac42b; padding:5px 60px;">Proceed To Payment</button>
                         </div>
                     </div>
                 </div>

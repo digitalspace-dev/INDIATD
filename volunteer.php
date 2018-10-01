@@ -35,7 +35,7 @@
                 <link rel="shortcut icon" href="img/favicon.ico">
             </head>
 
-            <body>
+            <body style="background:#fac42b;">
 
               <?php
               $servername = "65.60.4.130";
@@ -124,7 +124,7 @@
                     </nav>
 
 
-                <div class="container">
+                <div class="container" style="background: #fff;">
                     <div class="row">
                         <div id="volunteer-form" class="col-lg-6 col-lg-offset-3">
                             <div class="row">
@@ -212,7 +212,7 @@
                                 </div>
                                    <br/>
                                 <div class="col-lg-12 text-left">
-                                    <button class="button button-big button-dark" type="submit">Submit</button>
+                                    <button class=".btn-primary" type="submit" style="color:#fac42b; background:#000; padding:5px 30px; margin-left:-11px; margin-bottom:50px;">Submit</button>
                                 </div>
                                 </div>
                               </form>
