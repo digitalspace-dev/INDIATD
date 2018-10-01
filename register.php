@@ -95,17 +95,17 @@ require_once('config.php');
                                 <option value="Category A">Category A</option>
                                 <option value="Category B">Category B</option>
                         </select>
-                        <label class="IDForSportsCategoryA" for="Category A">Category A <br>
+                        <label class="IDForSportsCategoryA hideComponent" for="Category A">Category A <br>
                           <span>Select any two sports Category</span>
                         </label>
-                        <select class="IDForSportsCategoryA" multiple="multiple" name="CategoryA" id="type">
+                        <select class="IDForSportsCategoryA hideComponent" multiple="multiple" name="CategoryA" id="type">
 
                                 <option value="Fitness">Fitness</option>
                                 <option value="Strongman">Strongman</option>
                                 <option value="Powerlifting">Powerlifting</option>
                         </select>
-                        <label class="IDForSportsCategoryB" for="Category B">Category B</label>
-                        <select class="IDForSportsCategoryB" name="CategoryB" id="type">
+                        <label class="IDForSportsCategoryB hideComponent" for="Category B">Category B</label>
+                        <select class="IDForSportsCategoryB hideComponent" name="CategoryB" id="type">
                                 <option value="Select Category">Select Category</option>
                                 <option value="Kids">Kids</option>
                                 <option value="Masters">Masters</option>
@@ -113,7 +113,7 @@ require_once('config.php');
                     </div>
 
                     <!-- REGISTER FORM -->
-                    <div class="register-form col-lg-12">
+                    <div id="formContainer" class="register-form col-lg-12 hideComponent">
                         <div class="control-group IDForName">
                             <div class="controls">
                                 <br/>
@@ -202,9 +202,9 @@ require_once('config.php');
 
                         <div class="control-group IDForEmergencyContact">
                             <div class="controls">
-                                <h4> emergency contact <a style = "color:red">*</a></h4>
-                                <input type="text" name="em_contact_name" placeholder="Emergency Contact Name" id="name" required data-validation-required-message="Please enter your emergency contact name" />
-                                <input type="tel" name="em_contact_no" placeholder="Emergency Contact Number" id="phone" required data-validation-required-message="Please enter your emergency contact number" />
+                                <h4> emergency contact info <a style = "color:red">*</a></h4>
+                                <input type="text" name="em_contact_name" placeholder="Contact Name" id="name" required data-validation-required-message="Please enter your emergency contact name" />
+                                <input type="tel" name="em_contact_no" placeholder="Contact Number" id="phone" required data-validation-required-message="Please enter your emergency contact number" />
                             </div>
                         </div>
 
@@ -838,16 +838,18 @@ if ( IDForSportsCategory.val() === "Category A" ){
   IDForSportsCategoryB.hide();
   IDForSportsCategoryA.eq(0).css('display','block');
   $("#ms-list-1").css('display','block');
+  IDForAffiliate.show();
 } else if ( IDForSportsCategory.val() === "Category B" ){
   IDForSportsCategoryA.eq(0).css('display','none');
   IDForSportsCategoryB.show();
   $("#ms-list-1").css('display','none');
+  IDForAffiliate.hide();
 }
 
+$("#formContainer").show();
 IDForName.show();
 IDForEmail.show();
 IDForGender.show();
-IDForAffiliate.show();
 IDForEmergencyContact.show();
 IDForTshirtSize.show();
 IDForAddress.show();
@@ -856,6 +858,7 @@ IDForSaveChangesBtn.show();
 IDForAgreement.show();
 //IDForPaymnetBtn.show();
 });
+
 
 // REGISTER FORM FUNCTION
 document.getElementById('save-button').onclick = function() {

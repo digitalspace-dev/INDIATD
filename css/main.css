@@ -23,6 +23,10 @@
 
 /* CORE CSS */
 
+.hideComponent {
+  display: none;
+}
+
 body {
 	color:#666666;
 	font-family:'Open Sans';
