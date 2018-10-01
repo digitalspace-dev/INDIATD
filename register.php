@@ -95,17 +95,17 @@ require_once('config.php');
                                 <option value="Category A">Category A</option>
                                 <option value="Category B">Category B</option>
                         </select>
-                        <label class="IDForSportsCategoryA hideComponent" for="Category A">Category A <br>
+                        <label class="IDForSportsCategoryA hideComponent" style="display:none" for="Category A">Category A <br>
                           <span>Select any two sports Category</span>
                         </label>
-                        <select class="IDForSportsCategoryA hideComponent" multiple="multiple" name="CategoryA" id="type">
+                        <select class="IDForSportsCategoryA hideComponent" style="display:none" multiple="multiple" name="CategoryA" id="type">
 
                                 <option value="Fitness">Fitness</option>
                                 <option value="Strongman">Strongman</option>
                                 <option value="Powerlifting">Powerlifting</option>
                         </select>
-                        <label class="IDForSportsCategoryB hideComponent" for="Category B">Category B</label>
-                        <select class="IDForSportsCategoryB hideComponent" name="CategoryB" id="type">
+                        <label class="IDForSportsCategoryB hideComponent" style="display:none" for="Category B">Category B</label>
+                        <select class="IDForSportsCategoryB hideComponent" style="display:none" name="CategoryB" id="type">
                                 <option value="Select Category">Select Category</option>
                                 <option value="Kids">Kids</option>
                                 <option value="Masters">Masters</option>
@@ -113,7 +113,7 @@ require_once('config.php');
                     </div>
 
                     <!-- REGISTER FORM -->
-                    <div id="formContainer" class="register-form col-lg-12 hideComponent">
+                    <div id="formContainer" style="display:none" class="register-form col-lg-12 hideComponent">
                         <div class="control-group IDForName">
                             <div class="controls">
                                 <br/>
