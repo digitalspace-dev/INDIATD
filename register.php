@@ -151,45 +151,53 @@ require_once('config.php');
                         <div class="control-group IDForDivision">
                                 <div class="controls ">
                                     <h4>Division</h4>
-                                    <select name="division" id="type">
-                                        <option value="Individual Teens 13-15">Individual Teens 13-15</option>
-                                            <span>
-                                                <p>*Need parents consent for registration.</p>
-                                                <p><strong>Age Requirement:</strong> Athletes in this division must be 13 years of age or older as of 1/2/2018 but not older than 15 as of 1/1/2019.</p>
-                                            </span>
-                                        <option value="Individual Teen 16-18">Individual Teen 16-18</option>
-                                            <span>
-                                                <p>*Need parents consent for registration.</p>
-                                                <p><strong>Age Requirement:</strong> Athletes in this division must be 13 years of age or older as of 1/2/2018 but not older than 15 as of 1/1/2019.
-                                            </span>
-                                        <option value="Individual Pro">Individual Pro</option>
-                                            <span>
-                                                <p>This division is for elite level athletes.
-                                                   The athletes are required to perform all the complex weightlifting and gymnastics movement including heavy lifting.
-                                                </p>
-                                            </span>
-                                        <option value="Individual Scaled">Individual Scaled</option>
-                                            <span>
-                                                <p>This division is for those who are not sure about participating in individual pro  but can perform most of the gymnastics movement with occasional heavy weights.</p>
-                                            </span>
-                                        <option value="Individual Masters 35-39">Individual Masters 35-39</option>
-                                            <span>
-                                                <p>The athlete in this division are expected to perform same workout as individual Pro, only they will compete with athlete in their weight class.
-                                                 <p><strong>Age Requirement:</strong> Athletes must have been born on or between 1/2/79-1/1/84</p>
-                                                 </p>
-                                            </span>
-                                        <option value="Individual masters 40-44">Individual masters 40-44</option>
-                                            <span>
-                                                    <P>The athlete is this division are expected to perform a scaled version of individual elite /RX workouts.</P>
-                                                    <p><strong>Age Requirement:</strong> Athletes must have been born on or between 1/2/74-1/1/79</p>
 
-                                            </span>
-                                        <option value="Individual master 45-49">Individual master 45-49</option>
-                                            <span>
-                                                    <p>This athlete in this division are expected to perform most of the gymnastics and should be able to move light to moderate weight.</p>
-                                                    <p><strong>Requirement:</strong> Athletes must have been born after 1/1/74</p>
-                                            </span>
+                                    <select name="division" id="type">
+                                        <option id="option1" value="Individual Teens 13-15">Individual Teens 13-15</option>
+
+                                        <option id="option2" value="Individual Teen 16-18">Individual Teen 16-18</option>
+
+                                        <option id="option3" value="Individual Pro">Individual Pro</option>
+
+                                        <option id="option4" value="Individual Scaled">Individual Scaled</option>
+
+                                        <option id="option5" value="Individual Masters 35-39">Individual Masters 35-39</option>
+
+                                        <option id="option6" value="Individual masters 40-44">Individual masters 40-44</option>
+
+                                        <option id="option7" value="Individual master 45-49">Individual master 45-49</option>
                                     </select>
+
+                                    <span class="option1">
+                                        <p>*Need parents consent for registration.</p>
+                                        <p><strong>Age Requirement:</strong> Athletes in this division must be 13 years of age or older as of 1/2/2018 but not older than 15 as of 1/1/2019.</p>
+                                    </span>
+                                    <span class="option2" style="display:none">
+                                        <p>*Need parents consent for registration.</p>
+                                        <p><strong>Age Requirement:</strong> Athletes in this division must be 16 years of age or older as of 1/2/2018 but not older than 18 as of 1/1/2019.</p>
+                                    </span>
+                                    <span class="option3" style="display:none">
+                                        <p>This division is for elite level athletes.</P>
+                                        <p> The athletes are required to perform all the complex weightlifting and gymnastics movement including heavy lifting.</p>
+                                    </span>
+                                    <span class="option4" style="display:none">
+                                        <p>This division is for those who are not sure about participating in individual pro  but can perform most of the gymnastics movement with occasional heavy weights.</p>
+                                    </span>
+                                    <span class="option5" style="display:none">
+                                        <p>The athlete in this division are expected to perform same workout as individual Pro, only they will compete with athlete in their weight class.
+                                         <p><strong>Age Requirement:</strong> Athletes must have been born on or between 1/2/79-1/1/84</p>
+                                         </p>
+                                    </span>
+                                    <span class="option6" style="display:none">
+                                            <P>The athlete is this division are expected to perform a scaled version of individual elite /RX workouts.</P>
+                                            <p><strong>Age Requirement:</strong> Athletes must have been born on or between 1/2/74-1/1/79</p>
+
+                                    </span>
+                                    <span class="option7" style="display:none">
+                                            <p>This athlete in this division are expected to perform most of the gymnastics and should be able to move light to moderate weight.</p>
+                                            <p><strong>Requirement:</strong> Athletes must have been born after 1/1/74</p>
+                                    </span>
+
                                  </div>
                         </div>
 
@@ -245,7 +253,7 @@ require_once('config.php');
                                 <label for="state/pronvince">State/Province<a style = "color:red">*</a></label>
                                 <input type="text" name="add_state" placeholder="State/Province" id="state/pronvince" required data-validation-required-message="Please enter your state/province" />
                                 <label for="zipcode" style="width: 50%">Zip Code<a style = "color:red">*</a></label>
-                                <input type="text" name="add_zip_code" placeholder="zipcode" pattern="[0-9]{5}" id="zipcode" required data-validation-required-message="Please enter your zip code" style="width: 50%"/><br/>
+                                <input type="text" name="add_zip_code" placeholder="zipcode" pattern="[0-9]{6}" id="zipcode" required data-validation-required-message="Please enter your zip code" style="width: 50%"/><br/>
                                 <label for="country">Country<a style = "color:red">*</a></label>
                                 <select name="add_country" id="type">
                                     <option value="" disabled selected="selected">Select type</option>
@@ -706,8 +714,8 @@ require_once('config.php');
                         <div class="control-group IDForAgreement">
                             <div class="checkbox">
                                 <label>
-                                  <input type="checkbox" value="">
-                                  By registering to this event,you are agreeing to the IndiaThrow Down Online Challenge and Qualifier <b><font color = "red">liablity waiver and policies * </font></b>
+                                  <input type="checkbox" name="termsNCondition" value="">
+                                  By registering to this event you are agreeing to the IndiaThrow Down Online Challenge and Qualifier <b><font color = "red">liablity waiver and policies * </font></b>
                                 </label>
                             </div>
                         </div>
@@ -754,6 +762,8 @@ require_once('config.php');
 
     <script>
     $( document ).ready(function() {
+
+      //binding multiple select method
         $('select[multiple]').multiselect({
             columns: 1,
             placeholder: 'Select Category',
@@ -765,7 +775,7 @@ require_once('config.php');
             maxSelect:2
         });
 
-        //multiselect dynamic
+        //multi select dynamic check for max 2 selection
         $("#ms-list-1 .ms-options").on('click',function(){
           var value = $("#ms-list-1 button span").text();
           var array = value.split(', ');
@@ -773,11 +783,6 @@ require_once('config.php');
 
           if(array.length > 2) {
             alert("Maximum you can participate in any two Categories of sport, please select any two");
-            //$(this).find('input').prop( "checked", false );
-            //$(this).parent().find('button span').text('');
-            //value = '';
-            //array = [];
-            //flag = false;
           }
 
           if(flag){
@@ -787,7 +792,15 @@ require_once('config.php');
           }
         });
 
-        console.log( "ready!" );
+        //division extra info show/hide
+        $("select[name='division']").on('change',function(){
+          $("select[name='division']").parent().find('span').hide();
+          var className = $( "select[name='division'] option:selected" ).attr("id");
+          $("." + className).show();
+        });
+
+
+        //hiding fields initially
         IDForSportsCategoryA.hide();
         IDForSportsCategoryB.hide();
         IDForName.hide();
@@ -801,9 +814,9 @@ require_once('config.php');
         IDForAddInfo.hide();
         IDForSaveChangesBtn.hide();
         IDForAgreement.hide();
-
         $("#ms-list-1").css('display','none');
 
+        //handling payment btn show/hide
         if(enablePaymentBtn){
           IDForPaymnetBtn.show();
           IDForSportsCategory.hide();
@@ -813,7 +826,7 @@ require_once('config.php');
 
     });
 
-//Dynamic form logic
+//Dynamic form logic to show/hide fields
 var IDForSportsCategory = $(".IDForSportsCategory").eq(1);
 var IDForSportsCategoryA = $(".IDForSportsCategoryA");
 var IDForSportsCategoryB = $(".IDForSportsCategoryB");
@@ -834,7 +847,6 @@ var payment = 100;
 
 IDForSportsCategory.change(function() {
 if ( IDForSportsCategory.val() === "Category A" ){
-  //IDForSportsCategoryA.show();
   IDForSportsCategoryB.hide();
   IDForSportsCategoryA.eq(0).css('display','block');
   $("#ms-list-1").css('display','block');
@@ -856,7 +868,6 @@ IDForAddress.show();
 IDForAddInfo.show();
 IDForSaveChangesBtn.show();
 IDForAgreement.show();
-//IDForPaymnetBtn.show();
 });
 
 
@@ -865,31 +876,10 @@ document.getElementById('save-button').onclick = function() {
 
 	'use strict';
 
-	var CategoryM  = $("select[name='CategoryM']").val();
-  if (CategoryM == 'Category A'){
-    //Payment
-    var sportsCount = $("select[name='CategoryA']").val().length;
-    if(sportsCount == 1){
-      payment = 200000;
-    } else if (sportsCount == 2){
-      payment = 400000;
-    } else if (sportsCount == 3) {
-      alert("Maximum you can participate in any two Categories of sport, please select any two");
-      return false;
-    }
-    var CategoryA  = $("select[name='CategoryA']").val().toString();
-  	var CategoryB  = "NA";
-    var division  = $("select[name='division']").val();
-  }else {
-    var CategoryA  = "NA";
-  	var CategoryB  = $("select[name='CategoryB']").val();
-    var division  = "NA";
-    payment = 100000;
-  }
-
-	var first_name  = $("input[name='first_name']").val();
+  var first_name  = $("input[name='first_name']").val();
   var last_name  = $("input[name='last_name']").val();
   var email  = $("input[name='email']").val();
+  var email1  = $("input[name='email1']").val();
   var gender  = $("input[name='gender']").val();
 
   var affiliate_box_gym  = $("input[name='affiliate_box_gym']").val();
@@ -907,41 +897,123 @@ document.getElementById('save-button').onclick = function() {
   var dob_month  = $("select[name='dob_month']").val();
   var dob_year  = $("select[name='dob_year']").val();
   var instagram  = $("input[name='instagram']").val();
+  if(!instagram) {
+    instagram = "NA";
+  }
+  var termsNCondition = $("input[name='termsNCondition']").prop("checked");
 
+	var CategoryM  = $("select[name='CategoryM']").val();
+  var CategoryAVal = $("select[name='CategoryA']").val();
+  var CategoryBVal = $("select[name='CategoryB']").val();
 
-		 //if ( name=="" ){ alert("name area is empty!"); $("#name").focus(); IDForPaymnetBtn.hide();}
-	//else if ( email=="" ){ alert("email address area is empty!"); $("#email").focus(); IDForPaymnetBtn.hide();}
-	//else if ( phone=="" ){ alert("phone number area is empty!"); $("#phone").focus(); IDForPaymnetBtn.hide();}
-//	else if ( type=="" ){ alert("register type isn't selected!"); $("#type").focus(); IDForPaymnetBtn.hide();}
-//	else {
+  //null check specific and set payment parameter
+  if (CategoryM == 'Category A'){
+    if(CategoryAVal.length == 0) {
+      alert("Please choose Category A");
+      return false;
+    } else if (!affiliate_box_gym) {
+      alert("Please fill in Affiliate_box_gym");
+      return false;
+    }
 
-/*
-  	$.post("register-api.php", { CategoryM:CategoryM, CategoryA:CategoryA, CategoryB:CategoryB, first_name:first_name, last_name:last_name, email:email,
-     gender:gender, division:division, affiliate_box_gym:affiliate_box_gym, em_contact_name:em_contact_name,
-   em_contact_no:em_contact_no, apparel:apparel, add_street:add_street, add_city:add_city, add_state:add_state,
- add_zip_code:add_zip_code, add_country:add_country, add_phone:add_phone, national_represent:national_represent,
-dob_day:dob_day, dob_month:dob_month, dob_year:dob_year, instagram:instagram}, function( result ){
-			if ( result == "SUCCESS" ){
-				alert("Your form is saved. Proceed with payment");
-				setTimeout(function(){
-					$("#name").val("");
-					$("#email").val("");
-					$("#phone").val("");
-					$("#type").val("");
+    var sportsCount = $("select[name='CategoryA']").val().length;
+    if(sportsCount == 1){
+      payment = 200000;
+    } else if (sportsCount == 2){
+      payment = 400000;
+    } else if (sportsCount == 3) {
+      alert("Maximum you can participate in any two Categories of sport, please select any two");
+      return false;
+    }
 
-				},3000);
-        enablePaymentBtn = true;
-			} else {
-				alert("Your form isn't saved. Please check fields and try again.");
-			}
-		});
-*/
+    var CategoryA  = $("select[name='CategoryA']").val().toString();
+    var CategoryB  = "NA";
+    var division  = $("select[name='division']").val();
+
+  } else {
+    if(!CategoryBVal || CategoryBVal == "Select Category") {
+      alert("Please choose Category B");
+      return false;
+    }
+
+    var CategoryA  = "NA";
+    var CategoryB  = $("select[name='CategoryB']").val();
+    var division  = "NA";
+    payment = 100000;
+
+  }
+
+//null check common
+if(!first_name) {
+  alert("Please fill in First name");
+  return false;
+} else if (!last_name) {
+  alert("Please fill in Last name");
+  return false;
+} else if (!email) {
+  alert("Please fill in Email");
+  return false;
+} else if (!email1) {
+  alert("Please fill in Confirm email");
+  return false;
+} else if (email1 !== email) {
+  alert("Please check email and confirm email, as they do not match");
+  return false;
+} else if (!gender) {
+  alert("Please choose Gender");
+  return false;
+} else if (!em_contact_name) {
+  alert("Please fill in Emergency contact name");
+  return false;
+} else if (!em_contact_no) {
+  alert("Please fill in Emergency contact number");
+  return false;
+} else if (!apparel) {
+  alert("Please choose apparel size");
+  return false;
+} else if (!apparel) {
+  alert("Please choose apparel size");
+  return false;
+} else if (!add_street) {
+  alert("Please fill in Address street");
+  return false;
+} else if (!add_city) {
+  alert("Please fill in Address city");
+  return false;
+} else if (!add_state) {
+  alert("Please fill in Address state");
+  return false;
+} else if (!add_country) {
+  alert("Please choose Address country");
+  return false;
+} else if (!add_phone) {
+  alert("Please fill in Address phone");
+  return false;
+} else if (!national_represent) {
+  alert("Please choose National represent");
+  return false;
+} else if (!dob_day) {
+  alert("Please choose Date of Birth day");
+  return false;
+} else if (!dob_month) {
+  alert("Please choose Date of Birth month");
+  return false;
+} else if (!dob_year) {
+  alert("Please choose Date of Birth year");
+  return false;
+} else if (!termsNCondition) {
+  alert("Please check the checkbox and agree for IndiaThrow Down Online Challenge and Qualifier liablity waiver and policies");
+  return false;
+}
+
+  //prepare payload object
     var dataPayLoad = { CategoryM:CategoryM, CategoryA:CategoryA, CategoryB:CategoryB, first_name:first_name, last_name:last_name, email:email,
-     gender:gender, division:division, affiliate_box_gym:affiliate_box_gym, em_contact_name:em_contact_name,
-   em_contact_no:em_contact_no, apparel:apparel, add_street:add_street, add_city:add_city, add_state:add_state,
- add_zip_code:add_zip_code, add_country:add_country, add_phone:add_phone, national_represent:national_represent,
-dob_day:dob_day, dob_month:dob_month, dob_year:dob_year, instagram:instagram};
+                           gender:gender, division:division, affiliate_box_gym:affiliate_box_gym, em_contact_name:em_contact_name,
+                         em_contact_no:em_contact_no, apparel:apparel, add_street:add_street, add_city:add_city, add_state:add_state,
+                       add_zip_code:add_zip_code, add_country:add_country, add_phone:add_phone, national_represent:national_represent,
+                      dob_day:dob_day, dob_month:dob_month, dob_year:dob_year, instagram:instagram};
 
+   //Do Ajax post call
     $.ajax({
       type: "POST",
       url: "register-api.php",
@@ -967,10 +1039,9 @@ dob_day:dob_day, dob_month:dob_month, dob_year:dob_year, instagram:instagram};
 
   return false;
 
-//	}
-
 };
 
+        //Trigger razorpay code
         document.getElementById('rzp-button1').onclick = function(e) {
           let options = {
               "key": "<?php echo $razor_pay_key; ?>",
@@ -981,9 +1052,10 @@ dob_day:dob_day, dob_month:dob_month, dob_year:dob_year, instagram:instagram};
               "handler": function(response) {
                 // alert(response.razorpay_payment_id);
                   if (typeof response.razorpay_payment_id == 'undefined' || response.razorpay_payment_id < 1) {
-                      redirect_url = '/you-owe-money.html';
+                      //redirect_url = '/you-owe-money.html';
+                      redirect_url = 'http://indiathrowdown.com/fail.html';
                   } else {
-                      redirect_url = 'http://indiathrowdown.com/';
+                      redirect_url = 'http://indiathrowdown.com/success.html';
                   }
                   location.href = redirect_url;
               },
@@ -1000,6 +1072,7 @@ dob_day:dob_day, dob_month:dob_month, dob_year:dob_year, instagram:instagram};
           rzp1.open();
           e.preventDefault();
         }
+
     </script>
 
 <style>

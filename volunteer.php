@@ -168,51 +168,54 @@
                                     </div>
 
                                     <div class="controls ">
-                                            <h4>Gender</h4>
+                                            <label for="gender">Gender</label><br>
                                             <input type="radio" name="gender" value="male"> Male &emsp;&emsp;
                                             <input type="radio" name="gender" value="female"> Female
                                     </div>
+                                    <br>
 
-                                    <div class="control-group">
-                                        <div class="controls">
-                                            <b-form-group label="Stacked  checkboxes">
-                                                    <b-form-checkbox-group stacked v-model="selected" name="flavour2" :options="options">
-                                                    </b-form-checkbox-group>
-                                            </b-form-group>
-                                        </div>
-                                    </div>
+
                                 <!-- Role -->
 
                                 <div class="control-group">
                                         <div class="controls ">
-                                            <h4>Role</h4>
-                                            <select name="type" id="type">
-                                                <option value="India Throwdown Crew">India Throwdown Crew</option>
-                                                    <span>
-                                                        <p>The behind the scene heroes almost do everything…right from managing crowd to spectator to guests. They can be seen everywhere on the floor working to make the games as smooth as possible.</p>
-                                                    </span>
-                                                <option value="India Throwdown Judges">India Throwdown Judges</option>
-                                                    <span>
-                                                        <p>The judges at the India Throwdown event will be the one who will be counting the reps and submitting the final score of the athlete for fitness and strongman event.</p>
-                                                    </span>
-                                                <option value="India Throwdown Medical Crew">India Throwdown Medical Crew</option>
-                                                    <span>
-                                                        <p>The medical crew be it nurses, doctor or sports practitioner will come in handy in case of emergencies like in case of any untoward incident while performing any movement by athletes.</p>
-                                                    </span>
-                                                <option value="India Throwdown Co-ordinator">India Throwdown Co-ordinator</option>
-                                                    <span>
-                                                        <p>The Co-ordinator will be responsible for all the communication between India Throwdown and outside world. Should come with good communication skill and preferably a PR candidate.</p>
-                                                    </span>
-                                                <option value="India Throwdown Commentator and Anchor">India Throwdown Commentator and Anchor</option>
-                                                    <span>
-                                                        <p >These people will be responsible for on site commentary and anchoring. Preferably with good english and communication skill.</p>
-                                                    </span>
+
+                                            <label for="roleDropdown">Role</label><br>
+                                            <select name="roleDropdown" id="type">
+                                                <option id="option1" value="India Throwdown Crew">India Throwdown Crew</option>
+
+                                                <option id="option2" value="India Throwdown Judges">India Throwdown Judges</option>
+
+                                                <option id="option3" value="India Throwdown Medical Crew">India Throwdown Medical Crew</option>
+
+                                                <option id="option4" value="India Throwdown Co-ordinator">India Throwdown Co-ordinator</option>
+
+                                                <option id="option5" value="India Throwdown Commentator and Anchor">India Throwdown Commentator and Anchor</option>
+
                                             </select>
+
+                                            <span class="option1">
+                                                <p>The behind the scene heroes almost do everything right from managing crowd to spectator to guests. They can be seen everywhere on the floor working to make the games as smooth as possible.</p>
+                                            </span>
+                                            <span class="option2" style="display:none">
+                                                <p>The judges at the India Throwdown event will be the one who will be counting the reps and submitting the final score of the athlete for fitness and strongman event.</p>
+                                            </span>
+                                            <span class="option3" style="display:none">
+                                                <p>The medical crew be it nurses, doctor or sports practitioner will come in handy in case of emergencies like in case of any untoward incident while performing any movement by athletes.</p>
+                                            </span>
+                                            <span class="option4" style="display:none">
+                                                <p>The Co-ordinator will be responsible for all the communication between India Throwdown and outside world. Should come with good communication skill and preferably a PR candidate.</p>
+                                            </span>
+                                            <span class="option5" style="display:none">
+                                                <p >These people will be responsible for on site commentary and anchoring. Preferably with good english and communication skill.</p>
+                                            </span>
+
+
                                          </div>
                                 </div>
                                    <br/>
                                 <div class="col-lg-12 text-left">
-                                    <button class=".btn-primary" type="submit" style="color:#fac42b; background:#000; padding:5px 30px; margin-left:-11px; margin-bottom:50px;">Submit</button>
+                                    <button id="saveChanges" class=".btn-primary" type="submit" style="color:#fac42b; background:#000; padding:5px 30px; margin-left:-11px; margin-bottom:50px;">Submit</button>
                                 </div>
                                 </div>
                               </form>
@@ -221,28 +224,73 @@
                     </div>
                 </div>
 
- <!--<script>
-    export default {
-      data() {
-        return {
-          selected: [], // Must be an array reference!
-          options: [{
-              text: 'S',
-              value: 's'
-            },
-            {
-              text: 'L',
-              value: 'l'
-            },
-            {
-              text: 'XL',
-              value: 'xl'
-            },
-          ]
-        }
-      }
-    }
-  </script>-->
+
+                <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+                <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+                <script>
+                /*export default {
+                  data() {
+                    return {
+                      selected: [], // Must be an array reference!
+                      options: [{
+                          text: 'S',
+                          value: 's'
+                        },
+                        {
+                          text: 'L',
+                          value: 'l'
+                        },
+                        {
+                          text: 'XL',
+                          value: 'xl'
+                        },
+                      ]
+                    }
+                  }
+                }*/
+
+
+            $( document ).ready(function() {
+              //roleDropdown extra info show/hide
+              $("select[name='roleDropdown']").on('change',function(){
+                $("select[name='roleDropdown']").parent().find('span').hide();
+                var className = $( "select[name='roleDropdown'] option:selected" ).attr("id");
+                $("." + className).show();
+              });
+
+              //null check
+              $("#saveChanges").on('click',function(){
+                var first_name  = $("input[name='firstname']").val();
+                var last_name  = $("input[name='lastname']").val();
+                var email  = $("input[name='email']").val();
+                var phone  = $("input[name='phone']").val();
+                var gender  = $("input[name='gender']").val();
+
+                if(!first_name) {
+                  alert("Please fill in First name");
+                  return false;
+                } else if (!last_name) {
+                  alert("Please fill in Last name");
+                  return false;
+                } else if (!email) {
+                  alert("Please fill in Email");
+                  return false;
+                } else if (!phone) {
+                  alert("Please fill in phone number");
+                  return false;
+                } else if (!gender) {
+                  alert("Please choose Gender");
+                  return false;
+                } else {
+                  alert("Your form is saved.");
+                }
+
+              });
+
+          });
+
+  </script>
 
 </body>
 
