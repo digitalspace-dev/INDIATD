@@ -1020,10 +1020,10 @@ if(!first_name) {
       data: dataPayLoad,
       cache: false,
       success: function(result) {
-        if(data.status == 'success'){
+        if(result.status == 'success'){
           alert("Your form is saved. Proceed with payment");
-        }else if(data.status == 'error'){
-          alert("Error on query!");
+        }else if(result.status == 'error'){
+          console.log("Error on query!");
         }
 
       },

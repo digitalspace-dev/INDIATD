@@ -13,9 +13,9 @@ $conn = new mysqli($servername, $username, $password, $dbname);
 // Check connection
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
-    echo("Connection failed");
+    //echo("Connection failed");
 }else{
-  echo("Connection success");
+  //echo("Connection success");
 }
 
 $sports_category = "";
@@ -67,18 +67,18 @@ $dob = $_POST['dob_day']+""+$_POST['dob_month']+""+$_POST['dob_year'];
 $instagram = $_POST['instagram'];
 
 if($first_name != "" && $last_name != "" && $email != ""){
-  echo("Insert success");
+  //echo("Insert success");
 $sql = "INSERT INTO indiatd_athlete (sports_category,first_name,last_name,email,gender,divison,affiliate_box_gym,em_contact_name,em_contact_no,apparel,add_street,add_city,add_state,add_zip_code,add_country,add_phone,national_represent,dob,instagram)
 VALUES ('$sports_category', '$first_name', '$last_name', '$email', '$gender', '$divison' , '$affiliate_box_gym' , '$em_contact_name' , '$em_contact_no' , '$apparel' , '$add_street' , '$add_city' , '$add_state' , '$add_zip_code' , '$add_country' ,
   '$add_phone' , '$national_represent' , '$dob' , '$instagram')";
 }
 
 if ($conn->query($sql) === TRUE) {
-    echo "New record created successfully";
+    //echo "New record created successfully";
     $response_array['status'] = 'success';
 
 } else {
-   echo "Error in record creation " . $sql . "<br>" . $conn->error;
+   //echo "Error in record creation " . $sql . "<br>" . $conn->error;
     $response_array['status'] = 'error';
 }
 

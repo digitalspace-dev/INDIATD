@@ -37,67 +37,6 @@
 
             <body style="background:#fac42b;">
 
-              <?php
-              $servername = "65.60.4.130";
-              $username = "neonclou_devusr";
-              $password = "@Hope@2018#";
-              $dbname = "neonclou_dev";
-
-              // Create connection
-              $conn = new mysqli($servername, $username, $password, $dbname);
-
-              // Check connection
-              if ($conn->connect_error) {
-                  die("Connection failed: " . $conn->connect_error);
-                  //echo("Connection failed");
-              }else{
-              	//echo("Connection success");
-              }
-
-              $first_name = "";
-              $last_name = "";
-              $email = "";
-              $phone = "";
-              $gender = "";
-              $role = "";
-
-              $first_name = $_POST['firstname'];
-              $last_name = $_POST['lastname'];
-              $email = $_POST['email'];
-              $phone = $_POST['phone'];
-              $gender = $_POST['gender'];
-              $role = $_POST['type'];
-
-              if($first_name != "" && $last_name != "" && $email != "" && $phone != "" && $gender != "" && $role != ""){
-              	//echo("Insert success");
-              $sql = "INSERT INTO indiatd_volunteer (first_name,last_name,email,phone,gender,role)
-              VALUES ('$first_name', '$last_name', '$email', '$phone', '$gender','$role')";
-              }
-
-              if ($conn->query($sql) === TRUE) {
-                  //echo "New record created successfully";
-                  //alert("Form submitted successfully");
-
-              } else {
-                 //echo "Error in record creation " . $sql . "<br>" . $conn->error;
-              }
-
-              $first_name = "";
-              $last_name = "";
-              $email = "";
-              $phone = "";
-              $gender = "";
-              $role = "";
-
-              $conn->close();
-
-              // redirect after processing the POST request
-              //header("Location: " . $_SERVER["REQUEST_URI"]);
-              header("Location: http://indiathrowdown.com/"); /* Redirect browser */
-              //exit;
-
-              ?>
-
                     <nav id="nav-primary" class="navbar navbar-custom" role="navigation">
                             <div class="container">
 
@@ -266,6 +205,7 @@
                 var email  = $("input[name='email']").val();
                 var phone  = $("input[name='phone']").val();
                 var gender  = $("input[name='gender']").val();
+                var role = $("select[name='roleDropdown']").val();
 
                 if(!first_name) {
                   alert("Please fill in First name");
@@ -285,6 +225,36 @@
                 } else {
                   alert("Your form is saved.");
                 }
+
+                //prepare payload object
+                  var dataPayLoad = { firstname:first_name, lastname:last_name, email:email, phone:phone,
+                                         gender:gender, role:role};
+
+                 //Do Ajax post call
+                  $.ajax({
+                    type: "POST",
+                    url: "volunteer-api.php",
+                    data: dataPayLoad,
+                    cache: false,
+                    success: function(result) {
+                      if(result.status == 'success'){
+                        alert("Your form is saved.");
+                      }else if(result.status == 'error'){
+                        console.log("Error on query!");
+                      }
+
+                    },
+                    error: function (xmlHttpRequest, textStatus, errorThrown) {
+                       if(xmlHttpRequest.readyState == 0 || xmlHttpRequest.status == 0)
+                            return;  // it's not really an error
+                       else
+                            // Do normal error handling
+                            alert("Your form is saved.");
+                            IDForPaymnetBtn.show();
+                      }
+                });
+
+                return false;
 
               });
 
